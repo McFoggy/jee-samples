@@ -190,6 +190,7 @@
     
     <modules>
         <module>conversation-jaxrs</module>
+        <module>conversation-servlet</module>
     </modules>
 
 	<profiles>
