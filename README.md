@@ -4,6 +4,7 @@ This project is a collection of self contained JEE project serving as examples o
 
 ## Samples
 
+### CDI
 - [JAXRS & Conversation](conversation-jaxrs/README.md)  
   _demo usage of `javax.enterprise.context.Conversation` & `@ConversationScoped` beans inside a JAXRS application_ 
 - [Servlet & Conversation](conversation-servlet/README.md)  
@@ -26,11 +27,12 @@ This project uses [jgitver-maven-plugin](https://github.com/jgitver/jgitver-mave
 
 Once your are satisfied of the HEAD commit (ie you performed all your tests)
 
-- `git tag -a -m "release X.Y.Z, additional reason" X.Y.Z``
+- `git tag -a -m "release X.Y.Z, additional reason" X.Y.Z`
 - `mvn -Prelease -DskipTests deploy`
 - `git push --follow-tags origin master`
 
 ## Other JEE Samples
 
 - by [Arun Gupta](https://github.com/arun-gupta): https://github.com/javaee-samples
-- By [Olivier Cailloux](https://github.com/oliviercailloux): https://github.com/oliviercailloux/samples
+- by [Olivier Cailloux](https://github.com/oliviercailloux): https://github.com/oliviercailloux/samples
+- by [Apache TomEE](https://tomee.apache.org/index.html): https://tomee.apache.org/examples-trunk/
