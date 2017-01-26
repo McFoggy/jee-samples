@@ -10,7 +10,26 @@
 	<name>${artifactId} :: samples parent POM</name>
 	<description>Sample applications to illustrate some JEE features</description>
 
-	<properties>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <connection>scm:git:https://github.com/McFoggy/jee-samples.git</connection>
+        <developerConnection>scm:git:https://github.com/McFoggy/jee-samples.git</developerConnection>
+        <url>http://oss.brouillard.fr/projects/jee-samples/</url>
+    </scm>
+
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/McFoggy/jee-samples/issues</url>
+    </issueManagement>
+
+    <properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<failOnMissingWebXml>false</failOnMissingWebXml>
