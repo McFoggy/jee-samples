@@ -1,6 +1,23 @@
 # JAXRS & Conversation
 
-## Deployment
+## Execution & deployment
+
+### Start a server and deploy to it
+In order to start a fresh new server and deploy to it
+
+```
+mvn clean wildfly:run
+```
+
+You will have to stop the server afterwards
+
+```
+mvn clean wildfly:shutdown
+```
+
+### Deploy to an already running server
+
+If you want to deploy to a local wildfly instance
 
 ```
 mvn clean wildfly:deploy
@@ -9,10 +26,10 @@ mvn clean wildfly:deploy
 ## Usage
 
 1. Show that no conversation exists  
-    
+
     ```
     [~]> http -v -j --session=mysession localhost:8080/conversation-jaxrs/resources/jaxrs/view
-        
+
     GET /conversation-jaxrs/resources/jaxrs/view HTTP/1.1
     Accept: application/json, */*
     Accept-Encoding: gzip, deflate
@@ -20,17 +37,17 @@ mvn clean wildfly:deploy
     Content-Type: application/json
     Host: localhost:8080
     User-Agent: HTTPie/0.9.9
-       
+
     HTTP/1.1 204 No Content
     Date: Tue, 17 Jan 2017 13:56:30 GMT
     Server: WildFly/10
     X-Powered-By: Undertow/1
     ```
-    
+
 1. Create a conversation  
     ```
     [~]> http -v -j --session=mysession localhost:8080/conversation-jaxrs/resources/jaxrs/start
-        
+
     GET /conversation-jaxrs/resources/jaxrs/start HTTP/1.1
     Accept: application/json, */*
     Accept-Encoding: gzip, deflate
@@ -38,7 +55,7 @@ mvn clean wildfly:deploy
     Content-Type: application/json
     Host: localhost:8080
     User-Agent: HTTPie/0.9.9
-        
+
     HTTP/1.1 200 OK
     Connection: keep-alive
     Content-Length: 399
@@ -47,7 +64,7 @@ mvn clean wildfly:deploy
     Server: WildFly/10
     Set-Cookie: JSESSIONID=T5c5TrGa3hyVIISCztAhnwEZpnlZcWJxql2xPV-P.morli894; path=/conversation-jaxrs
     X-Powered-By: Undertow/1
-        
+
     {
         "action": "started new conversation: 1",
         "data": {
@@ -62,13 +79,13 @@ mvn clean wildfly:deploy
         }
     }
     ```
-    
+
     Here already we can see that the JEE server created an http session to store the newly created conversation (n°1) and asks the client to keep the sessionId as a Cookie
 
 1. Create another conversation  
     ```
     [~]> http -v -j --session=mysession localhost:8080/conversation-jaxrs/resources/jaxrs/start
-        
+
     GET /conversation-jaxrs/resources/jaxrs/start HTTP/1.1
     Accept: application/json, */*
     Accept-Encoding: gzip, deflate
@@ -77,7 +94,7 @@ mvn clean wildfly:deploy
     Cookie: JSESSIONID=T5c5TrGa3hyVIISCztAhnwEZpnlZcWJxql2xPV-P.morli894
     Host: localhost:8080
     User-Agent: HTTPie/0.9.9
-        
+
     HTTP/1.1 200 OK
     Connection: keep-alive
     Content-Length: 399
@@ -85,7 +102,7 @@ mvn clean wildfly:deploy
     Date: Tue, 17 Jan 2017 13:58:32 GMT
     Server: WildFly/10
     X-Powered-By: Undertow/1
-        
+
     {
         "action": "started new conversation: 2",
         "data": {
@@ -104,7 +121,7 @@ mvn clean wildfly:deploy
 1. View conversation n°1
     ```
     [~]> http -v -j --session=mysession localhost:8080/conversation-jaxrs/resources/jaxrs/view cid==1
-        
+
     GET /conversation-jaxrs/resources/jaxrs/view?cid=1 HTTP/1.1
     Accept: application/json, */*
     Accept-Encoding: gzip, deflate
@@ -113,7 +130,7 @@ mvn clean wildfly:deploy
     Cookie: JSESSIONID=T5c5TrGa3hyVIISCztAhnwEZpnlZcWJxql2xPV-P.morli894
     Host: localhost:8080
     User-Agent: HTTPie/0.9.9
-        
+
     HTTP/1.1 200 OK
     Connection: keep-alive
     Content-Length: 396
@@ -121,7 +138,7 @@ mvn clean wildfly:deploy
     Date: Tue, 17 Jan 2017 13:59:43 GMT
     Server: WildFly/10
     X-Powered-By: Undertow/1
-        
+
     {
         "action": "accessing data of conversation:",
         "data": {
@@ -136,13 +153,13 @@ mvn clean wildfly:deploy
         }
     }
     ```
-    
-    We can see that we have correctly retrieved the first created conversation data by looking at the time registered within the conversation scoped data object. 
-    
+
+    We can see that we have correctly retrieved the first created conversation data by looking at the time registered within the conversation scoped data object.
+
 1. End a conversation, the n°1 for example
     ```
     [~]> http -v -j --session=mysession localhost:8080/conversation-jaxrs/resources/jaxrs/stop cid==1
-        
+
     GET /conversation-jaxrs/resources/jaxrs/stop?cid=1 HTTP/1.1
     Accept: application/json, */*
     Accept-Encoding: gzip, deflate
@@ -151,7 +168,7 @@ mvn clean wildfly:deploy
     Cookie: JSESSIONID=T5c5TrGa3hyVIISCztAhnwEZpnlZcWJxql2xPV-P.morli894
     Host: localhost:8080
     User-Agent: HTTPie/0.9.9
-        
+
     HTTP/1.1 200 OK
     Connection: keep-alive
     Content-Length: 111
@@ -159,7 +176,7 @@ mvn clean wildfly:deploy
     Date: Tue, 17 Jan 2017 14:02:13 GMT
     Server: WildFly/10
     X-Powered-By: Undertow/1
-        
+
     {
         "action": "conversation 1 closed",
         "links": {
