@@ -12,7 +12,7 @@ mvn clean wildfly:run
 You will have to stop the server afterwards
 
 ```
-mvn clean wildfly:shutdown
+mvn wildfly:shutdown
 ```
 
 ### Deploy to an already running server
@@ -27,3 +27,4 @@ mvn clean wildfly:deploy
 
 - Open your browser on [http://localhost:8080/conversation-servlet/view](http://localhost:8080/conversation-servlet/view)
 - play with the links
+    ![WebServlet with conversation](src/doc/images/conversation-servlet.png?raw=true "conversation webservlet")

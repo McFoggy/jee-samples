@@ -12,7 +12,7 @@ mvn clean wildfly:run
 You will have to stop the server afterwards
 
 ```
-mvn clean wildfly:shutdown
+mvn wildfly:shutdown
 ```
 
 ### Deploy to an already running server

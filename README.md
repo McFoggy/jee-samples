@@ -9,6 +9,7 @@ This project is a collection of self contained JEE project serving as examples o
   _demo usage of `javax.enterprise.context.Conversation` & `@ConversationScoped` beans inside a JAXRS application_ 
 - [Servlet & Conversation](conversation-servlet/README.md)  
   _demo usage of `javax.enterprise.context.Conversation` & `@ConversationScoped` beans inside a Servlet based application_ 
+  ![WebServlet with conversation](conversation-servlet/src/doc/images/conversation-servlet.png?raw=true "conversation webservlet")
 
 ## Build
 
